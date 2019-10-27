@@ -10,10 +10,12 @@ public class Player : MonoBehaviour
     [SerializeField] float padding = 1f; // to stop the player from going partially off screen
     [SerializeField] GameObject laserPrefab; //all prefabs are of game object type
     [SerializeField] float projectileSpeed = 20f;
+    [SerializeField] float projectileFireRate = 0.3f;
+
+    Coroutine autoFireCoroutine;
 
     float xMin;
     float xMax;
-
     float yMin;
     float yMax;
 
@@ -36,11 +38,25 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject laser = Instantiate
-                (laserPrefab, transform.position, Quaternion.identity) //Quaternion.identity means just use the rotation that you have
-                    as GameObject; // what does this mean?????
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+            autoFireCoroutine = StartCoroutine(FireContinuously());
         }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            StopCoroutine(autoFireCoroutine);
+        }
+    }
+
+    IEnumerator FireContinuously()
+    {
+        while (true) // we have to put the coroutine in a while loop because it i occurs continously while the input butto is pressed.
+        {
+            GameObject laser = Instantiate
+             (laserPrefab, transform.position, Quaternion.identity) //Quaternion.identity means just use the rotation that you have
+                 as GameObject; // what does this mean?????
+            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+            yield return new WaitForSeconds(projectileFireRate); //when using WaitForSeconds for the first time, we must use new beforehand for syntax
+        }
+
     }
 
 
