@@ -20,12 +20,12 @@ public class EnemyPathing : MonoBehaviour
     void Update()
     {   
         Move();
-
     }
 
     private void Move()
     {
-        if (waypointIndex <= waypoints.Count - 1) // we use .Count because waypoints is a List. If it was an array, we would use .Length
+        if (waypointIndex <= waypoints.Count - 1) 
+        // we use .Count because waypoints is a List. If it was an array, we would use .Length
         {
             var targetPostion = waypoints[waypointIndex].transform.position;
             var movementThisFrame = moveSpeed * Time.deltaTime;
