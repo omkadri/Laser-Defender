@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyPathing : MonoBehaviour
 {
+    [SerializeField] WaveConfig waveConfig; //allows us to attach waveConfig scriptable object
     [SerializeField] List<Transform> waypoints; // The type is Transform because that is the only data type one the waypoint gameObject we are interested in
     [SerializeField] float moveSpeed = 2f;
     int waypointIndex = 0;//
@@ -12,6 +13,7 @@ public class EnemyPathing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        waypoints = waveConfig.GetWaypoints(); //gets GetWaypoints from waveConfig script
         transform.position = waypoints[waypointIndex].transform.position; // this lines spawns the enemy object at the first waypoint on the path(index 0)
 
     }
