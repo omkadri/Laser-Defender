@@ -31,7 +31,7 @@ public class EnemyPathing : MonoBehaviour
         {
             var targetPostion = waypoints[waypointIndex].transform.position;
             var movementThisFrame = moveSpeed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, targetPostion, movementThisFrame);
+            transform.position = Vector2.MoveTowards(transform.position, targetPostion, movementThisFrame);//MoveTowards allows us to move to a specified position
 
             if (transform.position == targetPostion)
             {
