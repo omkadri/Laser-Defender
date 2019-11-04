@@ -5,13 +5,21 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] List<WaveConfig> waveConfigs; //allows us to attach the wave scriptable objects
-    int StartingWave = 0;
+    [SerializeField]int startingWave = 0;
     
 
     void Start()
     {
-        var currentWave = waveConfigs[StartingWave];
-        StartCoroutine(SpawnAllEnemiesInWave(currentWave));
+        StartCoroutine(SpawnAllWaves());
+    }
+
+    private IEnumerator SpawnAllWaves()
+    {
+        for(int waveIndex = startingWave; waveIndex < waveConfigs.Count; waveIndex++)//sets current wave to starting wave and increases the wave #
+        {
+            var currentWave = waveConfigs[waveIndex];
+            yield return StartCoroutine(SpawnAllEnemiesInWave(currentWave));//Inception - makes sure an entire wave has spawned before the next one does
+        }
     }
 
     private IEnumerator SpawnAllEnemiesInWave(WaveConfig waveConfig)

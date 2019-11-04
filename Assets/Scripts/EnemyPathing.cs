@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyPathing : MonoBehaviour
 {
     WaveConfig waveConfig;
-    [SerializeField] List<Transform> waypoints; // The type is Transform because that is the only data type one the waypoint gameObject we are interested in
+    List<Transform> waypoints; // The type is Transform because that is the only data type one the waypoint gameObject we are interested in
     int waypointIndex = 0;//
 
 
