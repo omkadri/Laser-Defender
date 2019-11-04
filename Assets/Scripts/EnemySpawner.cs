@@ -6,11 +6,16 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] List<WaveConfig> waveConfigs; //allows us to attach the wave scriptable objects
     [SerializeField]int startingWave = 0;
+    [SerializeField] bool looping = false;
     
 
-    void Start()
+    IEnumerator Start() // this turns the start method into a coroutine
     {
-        StartCoroutine(SpawnAllWaves());
+        do
+        {
+            yield return StartCoroutine(SpawnAllWaves());
+        }
+        while (looping);
     }
 
     private IEnumerator SpawnAllWaves()
