@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class EnemyPathing : MonoBehaviour
 {
-    [SerializeField] WaveConfig waveConfig; //allows us to attach waveConfig scriptable object
+    WaveConfig waveConfig;
     [SerializeField] List<Transform> waypoints; // The type is Transform because that is the only data type one the waypoint gameObject we are interested in
-    [SerializeField] float moveSpeed = 2f;
     int waypointIndex = 0;//
 
 
@@ -24,13 +23,19 @@ public class EnemyPathing : MonoBehaviour
         Move();
     }
 
+    //this next method is meant to get waveConfig data from another script
+    public void SetWaveConfig(WaveConfig waveConfig) //this waveConfig is a seperate variable from the waveConfig above. It is local to this function only.
+    {
+        this.waveConfig = waveConfig;// this. is used when dealing with a local and global varianble of the same name - this. is refering to the BIG waveConfig outside of this function.
+    }
+
     private void Move()
     {
         if (waypointIndex <= waypoints.Count - 1) 
         // we use .Count because waypoints is a List. If it was an array, we would use .Length
         {
             var targetPostion = waypoints[waypointIndex].transform.position;
-            var movementThisFrame = moveSpeed * Time.deltaTime;
+            var movementThisFrame = waveConfig.GetMoveSpeed() * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, targetPostion, movementThisFrame);//MoveTowards allows us to move to a specified position
 
             if (transform.position == targetPostion)
