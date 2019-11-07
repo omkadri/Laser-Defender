@@ -86,6 +86,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>(); //retrieves the DamageDealer info from the object being collided with
+        if (!damageDealer) { return; } //protects us against null references 
         ProcessHit(damageDealer);
     }
 
