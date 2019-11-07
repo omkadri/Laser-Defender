@@ -6,8 +6,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // config parameters
+    [Header ("Player")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 1f; // to stop the player from going partially off screen
+    [SerializeField] float playerHealth = 1000;
+
+    [Header ("Projectile")]
     [SerializeField] GameObject laserPrefab; //all prefabs are of game object type
     [SerializeField] float projectileSpeed = 20f;
     [SerializeField] float projectileFireRate = 0.3f;
@@ -24,8 +28,6 @@ public class Player : MonoBehaviour
     {
         SetUpMoveBoundaries();
     }
-
-
 
     // Update is called once per frame
     void Update()
@@ -79,5 +81,20 @@ public class Player : MonoBehaviour
 
         yMin = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y + padding; // we have to use a vector3 here because in a 2D game, cameras exist in a 3D space
         yMax = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - padding;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>(); //retrieves the DamageDealer info from the object being collided with
+        ProcessHit(damageDealer);
+    }
+
+    private void ProcessHit(DamageDealer damageDealer)
+    {
+        playerHealth -= damageDealer.GetDamage();//retrieves damage data from DamageDealer script and subtracts it from enemy health
+        if (playerHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
