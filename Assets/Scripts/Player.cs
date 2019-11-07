@@ -92,6 +92,7 @@ public class Player : MonoBehaviour
     private void ProcessHit(DamageDealer damageDealer)
     {
         playerHealth -= damageDealer.GetDamage();//retrieves damage data from DamageDealer script and subtracts it from enemy health
+        damageDealer.Hit();//destroys laser prefab after collision
         if (playerHealth <= 0)
         {
             Destroy(gameObject);

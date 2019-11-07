@@ -46,12 +46,14 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>(); //retrieves the DamageDealer info from the object being collided with
+        if (!damageDealer) { return; } //protects us against null references 
         ProcessHit(damageDealer);
     }
 
     private void ProcessHit(DamageDealer damageDealer)
     {
         health -= damageDealer.GetDamage();//retrieves damage data from DamageDealer script and subtracts it from enemy health
+        damageDealer.Hit();
         if (health <= 0)
         {
             Destroy(gameObject);

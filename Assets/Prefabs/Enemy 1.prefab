@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3022744879924964586}
   - component: {fileID: 5318523362345616174}
   - component: {fileID: 4815494342769489125}
-  - component: {fileID: 1073531654110361373}
-  m_Layer: 0
+  - component: {fileID: 5375166251049118530}
+  m_Layer: 9
   m_Name: Enemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
   enemyLaserPrefab: {fileID: 8202356926921388207, guid: a2e37872a0e0f94498d4967510cb4cce,
     type: 3}
   enemyProjectileSpeed: 10
---- !u!58 &1073531654110361373
+--- !u!58 &5375166251049118530
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,6 +126,6 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0073190928, y: 0.03654304}
   serializedVersion: 2
-  m_Radius: 0.465
+  m_Radius: 0.41127428
