@@ -113,6 +113,9 @@ MonoBehaviour:
   enemyLaserPrefab: {fileID: 8202356926921388207, guid: a2e37872a0e0f94498d4967510cb4cce,
     type: 3}
   enemyProjectileSpeed: 10
+  enemyExplosionParticles: {fileID: 1587524950642304061, guid: 398c11a5a9eb5fa4db69a5632f15fdcb,
+    type: 3}
+  enemyExplosionDuration: 1
 --- !u!58 &4430147396515891905
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] float maxTimeBetweenShots = 3f;
     [SerializeField] GameObject enemyLaserPrefab;
     [SerializeField] float enemyProjectileSpeed = 10f;
+    [SerializeField] GameObject enemyExplosionParticles;
+    [SerializeField] float enemyExplosionDuration = 1f;
+
 
 
     // Start is called before the first frame update
@@ -56,7 +59,17 @@ public class Enemy : MonoBehaviour
         damageDealer.Hit();
         if (health <= 0)
         {
-            Destroy(gameObject);
+            enemyDies();
+            GameObject explosion = Instantiate(enemyExplosionParticles, transform.position, transform.rotation);
+            Destroy(explosion, enemyExplosionDuration);
+            
         }
+    }
+
+
+
+    private void enemyDies()
+    {
+        Destroy(gameObject);
     }
 }
