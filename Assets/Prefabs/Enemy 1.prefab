@@ -116,6 +116,10 @@ MonoBehaviour:
   enemyExplosionParticles: {fileID: 1587524950642304061, guid: 398c11a5a9eb5fa4db69a5632f15fdcb,
     type: 3}
   enemyExplosionDuration: 1
+  enemyDeathSFX: {fileID: 8300000, guid: bb2693ef28cc9584faff0fe73044eba6, type: 3}
+  deathSFXVolume: 1
+  enemyLaserSFX: {fileID: 8300000, guid: 090f693825bda6a44a8e41463b2efdad, type: 3}
+  EnemyLaserSFXVolume: 0.7
 --- !u!58 &5375166251049118530
 CircleCollider2D:
   m_ObjectHideFlags: 0

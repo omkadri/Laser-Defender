@@ -12,6 +12,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] float enemyProjectileSpeed = 10f;
     [SerializeField] GameObject enemyExplosionParticles;
     [SerializeField] float enemyExplosionDuration = 1f;
+    [SerializeField] AudioClip enemyDeathSFX;
+    [SerializeField] [Range(0,1)] float deathSFXVolume = 0.7f;
+    [SerializeField] AudioClip enemyLaserSFX;
+    [SerializeField] [Range(0, 1)] float EnemyLaserSFXVolume = 0.7f;
 
 
 
@@ -44,6 +48,7 @@ public class Enemy : MonoBehaviour
             (enemyLaserPrefab, transform.position, Quaternion.identity) //Quaternion.identity means just use the rotation that you have
                 as GameObject; // what does this mean?????
         EnemyLaser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -enemyProjectileSpeed);
+        AudioSource.PlayClipAtPoint(enemyLaserSFX, Camera.main.transform.position, EnemyLaserSFXVolume);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -60,9 +65,6 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             enemyDies();
-            GameObject explosion = Instantiate(enemyExplosionParticles, transform.position, transform.rotation);
-            Destroy(explosion, enemyExplosionDuration);
-            
         }
     }
 
@@ -71,5 +73,8 @@ public class Enemy : MonoBehaviour
     private void enemyDies()
     {
         Destroy(gameObject);
+        GameObject explosion = Instantiate(enemyExplosionParticles, transform.position, transform.rotation);
+        Destroy(explosion, enemyExplosionDuration);
+        AudioSource.PlayClipAtPoint(enemyDeathSFX, Camera.main.transform.position, deathSFXVolume);
     }
 }

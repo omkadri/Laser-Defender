@@ -16,6 +16,10 @@ public class Player : MonoBehaviour
     [SerializeField] float projectileSpeed = 20f;
     [SerializeField] float projectileFireRate = 0.3f;
 
+    [SerializeField] AudioClip playerLaserSFX;
+    [SerializeField] [Range(0, 1)] float PlayerLaserSFXVolume = 0.7f;
+
+
     Coroutine autoFireCoroutine;
 
     float xMin;
@@ -55,6 +59,7 @@ public class Player : MonoBehaviour
             GameObject laser = Instantiate
              (laserPrefab, transform.position, Quaternion.identity) //Quaternion.identity means just use the rotation that you have
                  as GameObject; // what does this mean?????
+            AudioSource.PlayClipAtPoint(playerLaserSFX, Camera.main.transform.position, PlayerLaserSFXVolume);
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
             yield return new WaitForSeconds(projectileFireRate); //when using WaitForSeconds for the first time, we must use new beforehand for syntax
         }
