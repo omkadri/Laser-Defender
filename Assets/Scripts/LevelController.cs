@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
+
+    [SerializeField] float delayInSeconds = 2f;
     public void LoadStartMenu()
     {
         SceneManager.LoadScene(0);
@@ -17,7 +19,14 @@ public class LevelController : MonoBehaviour
 
     public void LoadGameOver()
     {
+        StartCoroutine(WaitAndLoad()); //Waiting for the player death to fully finish before the Game Over Screen loads
+    }
+
+    IEnumerator WaitAndLoad()
+    {
+        yield return new WaitForSeconds(delayInSeconds);
         SceneManager.LoadScene("Game Over");
+
     }
 
     public void QuitGame()
