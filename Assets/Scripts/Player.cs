@@ -105,9 +105,14 @@ public class Player : MonoBehaviour
         damageDealer.Hit();//destroys laser prefab after collision
         if (playerHealth <= 0)
         {
-            Destroy(gameObject);
-            AudioSource.PlayClipAtPoint(playerDeathSFX, Camera.main.transform.position, PlayerDeathSFXVolume);
-            
+            PlayerDies();
         }
+    }
+
+    private void PlayerDies()
+    {
+        FindObjectOfType<LevelController>().LoadGameOver();
+        Destroy(gameObject);
+        AudioSource.PlayClipAtPoint(playerDeathSFX, Camera.main.transform.position, PlayerDeathSFXVolume);
     }
 }
