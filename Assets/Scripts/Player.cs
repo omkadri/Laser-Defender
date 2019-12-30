@@ -17,7 +17,11 @@ public class Player : MonoBehaviour
     [SerializeField] float projectileFireRate = 0.3f;
 
     [SerializeField] AudioClip playerLaserSFX;
+    [SerializeField] AudioClip playerDeathSFX;
+
     [SerializeField] [Range(0, 1)] float PlayerLaserSFXVolume = 0.7f;
+    [SerializeField] [Range(0, 1)] float PlayerDeathSFXVolume = 0.7f;
+
 
 
     Coroutine autoFireCoroutine;
@@ -102,6 +106,8 @@ public class Player : MonoBehaviour
         if (playerHealth <= 0)
         {
             Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(playerDeathSFX, Camera.main.transform.position, PlayerDeathSFXVolume);
+            
         }
     }
 }

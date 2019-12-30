@@ -101,7 +101,9 @@ MonoBehaviour:
   projectileSpeed: 20
   projectileFireRate: 0.1
   playerLaserSFX: {fileID: 8300000, guid: 83d1c78991588034ba8f4a1397c1d56d, type: 3}
+  playerDeathSFX: {fileID: 8300000, guid: 3ecc3d89230db5644a9e76459f9a0cd4, type: 3}
   PlayerLaserSFXVolume: 0.7
+  PlayerDeathSFXVolume: 0.7
 --- !u!60 &3514144636359515703
 PolygonCollider2D:
   m_ObjectHideFlags: 0
