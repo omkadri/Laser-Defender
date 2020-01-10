@@ -19,6 +19,7 @@ public class LevelController : MonoBehaviour
 
     public void LoadGameOver()
     {
+
         StartCoroutine(WaitAndLoad()); //Waiting for the player death to fully finish before the Game Over Screen loads
     }
 
