@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] int health = 100; //don't you have to put an f after a float???
+    [Header("Enemy Stats")]
+    [SerializeField] int health = 100;
+    [SerializeField] int scoreValue = 150;
+
+
+    [Header("Shooting")]
     [SerializeField] float shotCounter;
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
@@ -12,6 +17,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float enemyProjectileSpeed = 10f;
     [SerializeField] GameObject enemyExplosionParticles;
     [SerializeField] float enemyExplosionDuration = 1f;
+
+    [Header("Audio")]
     [SerializeField] AudioClip enemyDeathSFX;
     [SerializeField] [Range(0,1)] float deathSFXVolume = 0.7f;
     [SerializeField] AudioClip enemyLaserSFX;
@@ -72,6 +79,7 @@ public class Enemy : MonoBehaviour
 
     private void enemyDies()
     {
+        FindObjectOfType<GameSession>().AddToScore(scoreValue);
         Destroy(gameObject);
         GameObject explosion = Instantiate(enemyExplosionParticles, transform.position, transform.rotation);
         Destroy(explosion, enemyExplosionDuration);
