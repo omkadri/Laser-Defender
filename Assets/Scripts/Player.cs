@@ -115,4 +115,9 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
         AudioSource.PlayClipAtPoint(playerDeathSFX, Camera.main.transform.position, PlayerDeathSFXVolume);
     }
+
+    public float GetHealth()
+    {
+        return playerHealth;
+    }
 }

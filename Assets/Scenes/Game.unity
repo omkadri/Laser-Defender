@@ -958,6 +958,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2454905431582610003, guid: 59e70ebad678f744488904b5008f5281,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454905431582610003, guid: 59e70ebad678f744488904b5008f5281,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2454905431582610003, guid: 59e70ebad678f744488904b5008f5281,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 308
+      objectReference: {fileID: 0}
+    - target: {fileID: 6506659980975040129, guid: 59e70ebad678f744488904b5008f5281,
+        type: 3}
+      propertyPath: m_Name
+      value: 'Player Health '
+      objectReference: {fileID: 0}
     - target: {fileID: 3123268442720888600, guid: 59e70ebad678f744488904b5008f5281,
         type: 3}
       propertyPath: m_Name
@@ -1068,7 +1088,8 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5320636592765579200, guid: 59e70ebad678f744488904b5008f5281, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 59e70ebad678f744488904b5008f5281, type: 3}
 --- !u!1001 &4697769785318279537
 PrefabInstance:
